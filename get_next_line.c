@@ -6,7 +6,7 @@
 /*   By: dperez-a <dperez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:37:10 by dani_mm__         #+#    #+#             */
-/*   Updated: 2024/01/31 12:55:22 by dperez-a         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:38:14 by dperez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ char	*ft_read(int fd, char *buff)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*left_str;
+	static char	*buff;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	left_str = ft_read(fd, left_str);
-	if (!left_str)
+	buff = ft_read(fd, buff);
+	if (!buff)
 		return (NULL);
-	line = ft_get_line(left_str);
-	left_str = ft_new_str(left_str);
+	line = ft_get_line(buff);
+	buff = ft_new_str(buff);
 	return (line);
 }
 /*int	main(void)
